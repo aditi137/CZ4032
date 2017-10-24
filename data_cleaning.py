@@ -107,7 +107,36 @@ dsWithoutDuplicates['gearbox'].fillna(value='not-declared', inplace=True)
 dsWithoutDuplicates['vehicleType'].fillna(value='not-declared', inplace=True)
 dsWithoutDuplicates['model'].fillna(value='not-declared', inplace=True)
 
-print(dsWithoutDuplicates.isnull().sum())
+
+gearBoxVal = df['gearbox'].unique()
+gearBoxRep = ['automatic','manual','not-declared']
+
+vehicleTypeVal = df['vehicleType'].unique()
+vehicleTypeRep = ['not-declared','coupe', 'suv', 'small car', 'limousine', 'convertible', 'bus', 'combination', 'other']
+
+fuelTypeVal = df['fuelType'].unique()
+fuelTypeRep = ['benzene','diesel','not-declared','lpg','other','hybrid', 'cng', 'electric']
+
+notRepairedDamageVal = df['notRepairedDamage'].unique()
+notRepairedDamageRep = ['not-declared','yes','no']
+
+
+
+
+dsWithoutDuplicates['gearbox'].replace(gearBoxVal,gearBoxRep, inplace=True)
+dsWithoutDuplicates['vehicleType'].replace(vehicleTypeVal, vehicleTypeRep, inplace=True)
+dsWithoutDuplicates['fuelType'].replace(fuelTypeVal, fuelTypeRep, inplace=True)
+dsWithoutDuplicates['notRepairedDamage'].replace(notRepairedDamageVal, notRepairedDamageRep, inplace=True)
+
+cols = list(dsWithoutDuplicates.columns.values)
+print(cols)
+cols = ['name', 'vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model', 'kilometer', 'monthOfRegistration', 'fuelType', 'brand', 'notRepairedDamage', 'price']
+dsWithoutDuplicates = dsWithoutDuplicates[cols]
+print(dsWithoutDuplicates)
+#dsWithoutDuplicates.to_csv('cleaned_dataset.csv', sep=',')
+
+
+'''print(dsWithoutDuplicates.isnull().sum())
 
 for i, c in enumerate(categories):
     print("c: " , c)
@@ -124,12 +153,9 @@ for i, c in enumerate(categories):
     plt.xticks(r, g.index)
     plt.show()
 
-'''
-Dataset is cleaned. What should we use to predict price? Model name? Brand? Months registered?
-'''
 
-
-dsWithoutDuplicates.to_csv('cleaned_dataset.csv', sep=',')
+#Dataset is cleaned. What should we use to predict price? Model name? Brand? Months registered?
+'''
 
 
 
