@@ -1,7 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-
 
 '''
 Predict price of old cars? based on data? Hmmm......
@@ -38,7 +36,7 @@ Steps:
 '''
 
 
-df = pd.read_csv('../used-cars-database/autos.csv', sep =',', header = 0, encoding='cp1252')
+df = pd.read_csv('used-cars-database//autos.csv', sep =',', header = 0, encoding='cp1252')
 
 sample_A = df.sample(100)
 sample_A_description = df.describe()
@@ -133,7 +131,7 @@ print(cols)
 cols = ['name', 'vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model', 'kilometer', 'monthOfRegistration', 'fuelType', 'brand', 'notRepairedDamage', 'price']
 dsWithoutDuplicates = dsWithoutDuplicates[cols]
 print(dsWithoutDuplicates)
-#dsWithoutDuplicates.to_csv('cleaned_dataset.csv', sep=',')
+dsWithoutDuplicates.to_csv('cleaned_dataset.csv', sep=',')
 
 
 '''print(dsWithoutDuplicates.isnull().sum())
