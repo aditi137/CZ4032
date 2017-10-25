@@ -76,7 +76,7 @@ print("Fuel types: " ,fuelTypes)
 print("Damages: " , df['notRepairedDamage'].unique()) #ja : yes, nein: no
 print("Vehicle types: " , df['vehicleType'].unique())
 # [nan 'coupe' 'suv' 'kleinwagen' 'limousine' 'cabrio' 'bus' 'kombi' 'andere']
-# nan, coupe, suv, small car, limousine, convertible, bus, combination, other
+# nan, sport sedan, suv, small car, limousine, convertible, bus, combination, other
 print("Brands: " , df['brand'].unique())
 
 #### Removing the duplicates
@@ -110,7 +110,7 @@ gearBoxVal = df['gearbox'].unique()
 gearBoxRep = ['automatic','manual','not-declared']
 
 vehicleTypeVal = df['vehicleType'].unique()
-vehicleTypeRep = ['not-declared','coupe', 'suv', 'small car', 'limousine', 'convertible', 'bus', 'combination', 'other']
+vehicleTypeRep = ['not-declared','sport sedan', 'suv', 'small car', 'limousine', 'convertible', 'bus', 'combination', 'other']
 
 fuelTypeVal = df['fuelType'].unique()
 fuelTypeRep = ['benzene','diesel','not-declared','lpg','other','hybrid', 'cng', 'electric']
