@@ -185,6 +185,7 @@ dsWD_fuelType = pd.get_dummies(dsWD['fuelType'])
 dsDummyVar = pd.concat([dsWD_gearbox,dsWD_notRepairedDamage,dsWD_brand,dsWD_model,dsWD_vehicleType,dsWD_fuelType], axis=1)
 #dsDummyVar.to_csv('data_dummy_var.csv', sep=',')
 
+print(dsWD_brand.columns)
 
 #scale attributes that are continuous values? Between 0 and 1? Hmmmm
 
@@ -235,9 +236,15 @@ Sample Output
 '''
 
 print(dsFinal.head())
-dsFinal.to_csv('dsFinal.csv', sep=',', header = 0)
-dsFinal.to_csv('dsFinalWithHeaders.csv', sep=',')
+#dsFinal.to_csv('dsFinal.csv', sep=',', header = 0)
+#dsFinal.to_csv('dsFinalWithHeaders.csv', sep=',')
 
+m = 3*dsFinal.shape[0] // 10
+testSet = dsFinal[:m]
+trainingSet = dsFinal[m:]
+
+trainingSet.to_csv('trainingSet.csv',sep=',', header=0, index=False)
+testSet.to_csv('testSet.csv',sep=',',header=0, index = False)
 
 
 '''

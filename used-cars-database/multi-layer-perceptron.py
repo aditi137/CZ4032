@@ -46,9 +46,9 @@ def set_weights(w, n_in=1, n_out=1, logistic=True):
 
 #read and divide data into test and train sets
 car_data = np.loadtxt('../dsFinal.csv', delimiter=',')
-sample_size = 100000
+sample_size = car_data.shape[0]
 car_data = car_data[:sample_size]
-X_data, Y_data = car_data[:,:-1], car_data[:,-1]
+X_data, Y_data = car_data[:,1:-1], car_data[:,-1]
 Y_data = (np.asmatrix(Y_data)).transpose()
 
 print("X_data:", X_data)
@@ -62,17 +62,24 @@ m = 3*X_data.shape[0] // 10
 testX, testY = X_data[:m],Y_data[:m]
 trainX, trainY = X_data[m:], Y_data[m:]
 
+print("trainX:", trainX)
+print("testX:", testX)
+
+
 # scale data
-trainX_max, trainX_min =  np.max(trainX, axis=0), np.min(trainX, axis=0)
-testX_max, testX_min =  np.max(testX, axis=0), np.min(testX, axis=0)
+#trainX_max, trainX_min =  np.max(trainX, axis=0), np.min(trainX, axis=0)
+#testX_max, testX_min =  np.max(testX, axis=0), np.min(testX, axis=0)
 
-trainX = scale(trainX, trainX_min, trainX_max)
-testX = scale(testX, testX_min, testX_max)
+#trainX = scale(trainX, trainX_min, trainX_max)
+#testX = scale(testX, testX_min, testX_max)
 
-epochs = 10000
+#print("trainX_Scale:", trainX)
+#print("testX_Scale:", testX)
+
+epochs = 1000
 batch_size = 32
-no_hidden1 = 30 #num of neurons in hidden layer 1
-learning_rate = 0.001
+no_hidden1 = 75 #num of neurons in hidden layer 1
+learning_rate = 0.00001
 no_features = trainX.shape[1]
 n = trainX.shape[0]
 x = T.matrix('x') # data sample
@@ -135,7 +142,7 @@ test_accuracy = np.zeros(epochs)
 test_cost = np.zeros(epochs)
 
 t = time.time()
-for j in range (len(lr)):
+'''for j in range (len(lr)):
     alpha.set_value(lr[j])
     print (alpha.get_value())
 
@@ -165,9 +172,9 @@ for j in range (len(lr)):
                     min_error = validate_cost[j][iter]
                     best_learning_rate = lr[j]
         print("complete fold", i+1)
-    print ("Complete validation on learning rate", alpha.get_value())
+    print ("Complete validation on learning rate", alpha.get_value())'''
 
-print("Optimal Learning rate =", best_learning_rate)
+#print("Optimal Learning rate =", best_learning_rate)
 
 set_weights(w_o,no_hidden1)
 set_bias(b_o)
@@ -185,26 +192,29 @@ for iter in range(epochs):
     pred, test_cost[iter], test_accuracy[iter] = test(testX, testY)
 
 
+print("pred:" , pred)
+print("testY:", testY)
 #Plots
+'''
 plt.figure()
 plt.plot(np.arange(epochs),validate_cost[0],label='Validation alpha = 0.001')
-'''plt.plot(np.arange(epochs),validate_cost[1],label='Validation alpha=0.005')
+plt.plot(np.arange(epochs),validate_cost[1],label='Validation alpha=0.005')
 plt.plot(np.arange(epochs),validate_cost[2],label='Validation alpha=0.0001')
 plt.plot(np.arange(epochs),validate_cost[3],label='Validation alpha=0.0005')
-plt.plot(np.arange(epochs),validate_cost[4],label='Validation alpha=0.00001')'''
+plt.plot(np.arange(epochs),validate_cost[4],label='Validation alpha=0.00001')
 
-plt.plot(np.arange(epochs),train_cost[0],'--',label='Training alpha=0.001')
-'''
+#plt.plot(np.arange(epochs),train_cost[0],'--',label='Training alpha=0.001')
+
 plt.plot(np.arange(epochs),train_cost[1],'--',label='Training alpha=0.005')
 plt.plot(np.arange(epochs),train_cost[2],'--',label='Training alpha=0.0001')
 plt.plot(np.arange(epochs),train_cost[3],'--',label='Training alpha=0.0005')
-plt.plot(np.arange(epochs),train_cost[4],'--',label='Training alpha=0.00001')'''
+plt.plot(np.arange(epochs),train_cost[4],'--',label='Training alpha=0.00001')
 plt.xlabel('Time (s)')
 plt.ylabel('Mean Square Error')
 plt.title('Training and validating for different learning rates')
 plt.legend()
 plt.savefig('training_error_validation_error.png')
-
+'''
 
 plt.figure()
 plt.plot(np.arange(epochs),test_accuracy,label=('alpha= ',best_learning_rate))
@@ -215,11 +225,26 @@ plt.legend()
 plt.savefig('test_accuracy.png')
 
 plt.figure()
+plt.plot(np.arange(epochs),test_cost,label=('alpha= ',best_learning_rate))
+plt.xlabel('Epochs')
+plt.ylabel('Cost')
+plt.title('Test Cost')
+plt.legend()
+plt.savefig('test_cost.png')
+
+plt.figure()
 plt.plot(np.arange(testX.shape[0]),testY, label=('price in dataset'))
 plt.plot(np.arange(testX.shape[0]),pred, label=('predicted price'))
 plt.legend()
 plt.xlabel('Input row')
 plt.ylabel('Price')
 plt.savefig('Price_prediction.png')
+
+'''
+plt.figure()
+plt.plot(np.arange(testX.shape[0]),pred, label=('predicted price'))
+plt.xlabel('Input row')
+plt.ylabel('Price')
+#plt.savefig('Price_prediction.png')'''
 
 plt.show()
