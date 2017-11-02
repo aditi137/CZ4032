@@ -1,7 +1,8 @@
 import pandas as pd
 from sklearn import preprocessing as prep
 import matplotlib.pyplot as plt
-
+plt.rcParams.update({'figure.max_open_warning': 0})
+plt.style.use='default'
 '''
 Predict price of old cars? Hmmm......
 
@@ -87,6 +88,7 @@ dsWD = df.drop_duplicates(['name','price','vehicleType','yearOfRegistration'
                          ,'gearbox','powerPS','model','kilometer','monthOfRegistration','fuelType'
                          ,'notRepairedDamage'])
 
+
 # remove outliers. range values can be changed
 dsWD = dsWD[
         (dsWD.yearOfRegistration <= 2016)
@@ -95,6 +97,9 @@ dsWD = dsWD[
       & (dsWD.price <= 150000)
       & (dsWD.powerPS >= 10)
       & (dsWD.powerPS <= 500)]
+
+
+
 
 
 print("-----------------\nData kept for analisys: %d percent of the entire set\n-----------------" % (100 * dsWD['name'].count() / df['name'].count()))
@@ -171,6 +176,20 @@ Attributes to convert into dummy variables:
 
 '''
 
+att_values_to_plot = ['kilometer','vehicleType','brand','model','yearOfRegistration','fuelType','notRepairedDamage']
+'''for attribute in att_values_to_plot:
+    plt.figure()
+    group = dsWD.groupby(attribute).size()
+    dfTemp = pd.DataFrame(data = group)
+    dfTemp.plot(kind='bar', figsize=(40,20))
+    plt.savefig(attribute+'_distribution.png')
+'''
+
+
+
+
+
+
 
 #Convert categorical variables into dummy variables. When you do this, you get, Curse of dimentionality! Hmmmmm...
 #For columns like models/brands that have many categories, you end up having a lot of 0s and one 1 only. Hmmmm....
@@ -243,8 +262,8 @@ m = 3*dsFinal.shape[0] // 10
 testSet = dsFinal[:m]
 trainingSet = dsFinal[m:]
 
-trainingSet.to_csv('trainingSet.csv',sep=',', header=0, index=False)
-testSet.to_csv('testSet.csv',sep=',',header=0, index = False)
+#trainingSet.to_csv('trainingSet.csv',sep=',', header=0, index=False)
+#testSet.to_csv('testSet.csv',sep=',',header=0, index = False)
 
 
 '''
