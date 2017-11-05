@@ -37,7 +37,7 @@ Steps:
 - Which attributes to keep, which to throw? First find what values the attributes hold. you can do that in python code.
 '''
 
-
+# 1st stage of data-cleaning procedure =======================================================================================================================
 df = pd.read_csv('used-cars-database//autos.csv', sep =',', header = 0, encoding='cp1252')
 
 sample_A = df.sample(100) #test code to get first 100 samples
@@ -48,39 +48,6 @@ sample_A_description = df.describe() #.describe() gets count mean std min max + 
 
 df.drop(['seller', 'offerType', 'abtest', 'dateCrawled', 'nrOfPictures', 'lastSeen', 'postalCode', 'dateCreated'], axis='columns', inplace=True)
 #remove columns named above. dateCrawled, dateCreated open to discussion. Not intending to use when predicting price for the moment.
-
-
-
-'''
-df.loc[boolean] looks at table and picks out rows that satisfy specified condition. count() sums the number of rows, .count()
-returns a series. get specific number by specifying ['column name']
-
-'''
-#print(df.loc[df.yearOfRegistration < 1950]['name'])
-#this gives all the rows where yearOfRegistration fits condition specified
-
-'''
-print("Too old: %d" % df.loc[df.yearOfRegistration < 1950]['name'].count())
-print("Too cheap: %d" % df.loc[df.price < 100]['name'].count())
-print("Too expensive: " , df.loc[df.price > 150000]['name'].count())
-print("Too few km: " , df.loc[df.kilometer < 5000]['name'].count())
-print("Too many km: " , df.loc[df.kilometer > 200000]['name'].count())
-print("Too few PS: " , df.loc[df.powerPS < 10]['name'].count())
-print("Too many PS: " , df.loc[df.powerPS > 500]['name'].count())
-'''
-
-#fuelTypes = df['fuelType'].unique()
-#['benzin' 'diesel' nan 'lpg' 'andere' 'hybrid' 'cng' 'elektro']
-# benzene, diesel, nan, lpg, other, hybrid, cng, electric
-
-#print("Fuel types: " ,fuelTypes)
-#print("Damages: " , df['notRepairedDamage'].unique()) #ja : yes, nein: no
-#print("Vehicle types: " , df['vehicleType'].unique())
-# [nan 'coupe' 'suv' 'kleinwagen' 'limousine' 'cabrio' 'bus' 'kombi' 'andere']
-# nan, coupe, suv, small car, limousine, convertible, bus, combination, other
-#print("Brands: " , df['brand'].unique())
-
-# nan, sport sedan, suv, small car, limousine, convertible, bus, combination, other
 
 
 #### Removing the duplicates
@@ -122,12 +89,13 @@ fuelType               15400
 brand                      0
 notRepairedDamage      42124
 '''
+
 #for each category replace nan conditions with 'not declared'
-dsWD['notRepairedDamage'].fillna(value='not-declared', inplace=True)
-dsWD['fuelType'].fillna(value='not-declared', inplace=True)
-dsWD['gearbox'].fillna(value='not-declared', inplace=True)
-dsWD['vehicleType'].fillna(value='not-declared', inplace=True)
-dsWD['model'].fillna(value='not-declared', inplace=True)
+dsWD['notRepairedDamage'].fillna(value='not-declared_nrp', inplace=True)
+dsWD['fuelType'].fillna(value='not-declared_ft', inplace=True)
+dsWD['gearbox'].fillna(value='not-declared_gb', inplace=True)
+dsWD['vehicleType'].fillna(value='not-declared_vt', inplace=True)
+dsWD['model'].fillna(value='not-declared_mo', inplace=True)
 
 #check that there no more columns with null values
 #print(dsWD.isnull().sum())
@@ -139,16 +107,16 @@ categories = ['gearbox', 'model', 'brand', 'vehicleType', 'fuelType', 'notRepair
 
 
 gearBoxVal = df['gearbox'].unique()
-gearBoxRep = ['automatic','manual','not-declared']
+gearBoxRep = ['automatic','manual','not-declared_gb']
 
 vehicleTypeVal = df['vehicleType'].unique()
-vehicleTypeRep = ['not-declared','sport sedan', 'suv', 'small car', 'limousine', 'convertible', 'bus', 'combination', 'other']
+vehicleTypeRep = ['not-declared_vt','sport sedan', 'suv', 'small car', 'limousine', 'convertible', 'bus', 'combination', 'other_vt']
 
 fuelTypeVal = df['fuelType'].unique()
-fuelTypeRep = ['benzene','diesel','not-declared','lpg','other','hybrid', 'cng', 'electric']
+fuelTypeRep = ['benzene','diesel','not-declared_ft','lpg','other_ft','hybrid', 'cng', 'electric']
 
 notRepairedDamageVal = df['notRepairedDamage'].unique()
-notRepairedDamageRep = ['not-declared','yes','no']
+notRepairedDamageRep = ['not-declared_nrp','yes','no']
 
 
 
@@ -163,7 +131,8 @@ dsWD['notRepairedDamage'].replace(notRepairedDamageVal, notRepairedDamageRep, in
 cols = ['name', 'vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model', 'kilometer', 'monthOfRegistration', 'fuelType', 'brand', 'notRepairedDamage', 'price']
 
 dsWD = dsWD[cols]
-#print(dsWD[['brand','model']].sample(100))
+dsWD.to_csv('datasets/cleaned_dataset.csv', sep=',',index=0)
+#end of 1st stage of data cleaning ==================================================================================================================================================
 
 '''
 Attributes to convert into dummy variables:
@@ -176,13 +145,15 @@ Attributes to convert into dummy variables:
 
 '''
 
+
+#code for visualisation
 att_values_to_plot = ['kilometer','vehicleType','brand','model','yearOfRegistration','fuelType','notRepairedDamage']
 '''for attribute in att_values_to_plot:
     plt.figure()
     group = dsWD.groupby(attribute).size()
     dfTemp = pd.DataFrame(data = group)
     dfTemp.plot(kind='bar', figsize=(40,20))
-    plt.savefig(attribute+'_distribution.png')
+    plt.savefig('/Images/' + attribute+'_distribution.png')
 '''
 
 
@@ -202,7 +173,7 @@ dsWD_fuelType = pd.get_dummies(dsWD['fuelType'])
 
 
 dsDummyVar = pd.concat([dsWD_gearbox,dsWD_notRepairedDamage,dsWD_brand,dsWD_model,dsWD_vehicleType,dsWD_fuelType], axis=1)
-#dsDummyVar.to_csv('data_dummy_var.csv', sep=',')
+dsDummyVar.to_csv('datasets/data_dummy_var.csv', sep=',')
 
 print(dsWD_brand.columns)
 
@@ -214,13 +185,8 @@ for col_name in list_of_col_names:
 
 print(dsWD.describe())
 
-#concatenate dummy variables with attributes from dsWD. What attributes? Take note, these attributes cannot be in strings.
-#kilometers, monthsRegistered,
 
-#Build regression model based on continuous values first. ie. powerPS, kilometers, monthOfRegistration, yearOfRegistration
-
-#create temp csv containing dataframe for these 4 attributes:  powerPS, kilometers, monthOfRegistration, yearOfRegistration
-
+#Scale continuous values except price ============================================================================================================================
 dsContValues = pd.concat([dsWD['powerPS'], dsWD['kilometer'], dsWD['monthOfRegistration'], dsWD['yearOfRegistration'], dsWD['price']], axis=1)
 #dsContValues.to_csv('data_continuousAttributes.csv', sep=',')
 
@@ -255,15 +221,15 @@ Sample Output
 '''
 
 print(dsFinal.head())
-#dsFinal.to_csv('dsFinal.csv', sep=',', header = 0)
-#dsFinal.to_csv('dsFinalWithHeaders.csv', sep=',')
+dsFinal.to_csv('datasets/dsFinal.csv', sep=',', header = 0)
+dsFinal.to_csv('datasets/dsFinalWithHeaders.csv', sep=',')
 
 m = 3*dsFinal.shape[0] // 10
 testSet = dsFinal[:m]
 trainingSet = dsFinal[m:]
 
-#trainingSet.to_csv('trainingSet.csv',sep=',', header=0, index=False)
-#testSet.to_csv('testSet.csv',sep=',',header=0, index = False)
+trainingSet.to_csv('datasets/trainingSet.csv',sep=',', header=0, index=False)
+testSet.to_csv('datasets/testSet.csv',sep=',',header=0, index = False)
 
 
 '''

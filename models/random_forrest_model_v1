@@ -1,0 +1,51 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     trainingSet
+Instances:    212894
+Attributes:   5
+              powerPS
+              kilometer
+              monthOfRegistration
+              yearOfRegistration
+              price
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 127.28 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 44.24 seconds
+
+=== Summary ===
+
+Correlation coefficient                  0.9631
+Mean absolute error                   1171.8834
+Root mean squared error               2158.5494
+Relative absolute error                 22.6539 %
+Root relative squared error             27.0536 %
+Total Number of Instances           212894     
+
+
+=== Re-evaluation on test set ===
+
+User supplied test set
+Relation:     testSet
+Instances:     unknown (yet). Reading incrementally
+Attributes:   5
+
+=== Summary ===
+
+Correlation coefficient                  0.8748
+Mean absolute error                   1790.9275
+Root mean squared error               3913.4628
+Total Number of Instances            91239     
+

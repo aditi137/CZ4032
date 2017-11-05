@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98917567-4aac-4bd4-8d1d-78c9c26b44f8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/random_forest_model_v1.model" afterPath="$PROJECT_DIR$/random_forest_model_v1.model" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cleaned_dataset.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dsFinal.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dsFinalWithHeaders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/random_forest_model_v1.model" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/random_forrest_model_v1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testSet.arff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testSet.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/trainingSet.arff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/trainingSet.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/used-cars-database/graph_testing.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/used-cars-database/logistic_regression.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning.py" afterPath="$PROJECT_DIR$/data_cleaning.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CZ4032.iws" />
@@ -26,11 +38,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="data_cleaning.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_cleaning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_cleaning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.022865854">
-              <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            <state vertical-scroll-proportion="-61.666668">
+              <caret line="118" column="41" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_preprocessing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_preprocessing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -39,10 +63,10 @@
         </entry>
       </file>
       <file leaf-file-name="multi-layer-perceptron.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py">
+        <entry file="file://$PROJECT_DIR$/multi-layer-perceptron.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+              <caret line="99" column="2" selection-start-line="99" selection-start-column="2" selection-end-line="99" selection-end-column="2" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -50,60 +74,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="4Layer-MSE.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/4Layer-MSE.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="graph_testing.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graph_testing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13907285">
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="4Layer-Accuracy.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/4Layer-Accuracy.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_cost.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/test_cost.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graph_testing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/graph_testing.py">
+      <file leaf-file-name="ResultAnalyser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ResultAnalyser.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+              <caret line="25" column="20" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="multilayer_perceptron_4.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_accuracy.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/test_accuracy.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="training_error_validation_error.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/used-cars-database/training_error_validation_error.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -126,7 +127,12 @@
         <option value="$PROJECT_DIR$/used-cars-database/graph_testing.py" />
         <option value="$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py" />
         <option value="$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing.py" />
+        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/data_cleaning.py" />
+        <option value="$PROJECT_DIR$/result_analyis.py" />
+        <option value="$PROJECT_DIR$/multi-layer-perceptron.py" />
+        <option value="$PROJECT_DIR$/graph_testing.py" />
       </list>
     </option>
   </component>
@@ -134,10 +140,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1300" />
-    <option name="y" value="-406" />
-    <option name="width" value="1280" />
-    <option name="height" value="774" />
+    <option name="x" value="1280" />
+    <option name="y" value="-443" />
+    <option name="width" value="1600" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -196,6 +202,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="datasets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Volkswagon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Results" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ4032" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -213,24 +275,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_cleaning">
-    <configuration default="false" name="logistic_regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CZ4032" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/logistic_regression.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.graph_testing">
     <configuration default="false" name="multi-layer-perceptron" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -248,24 +293,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="graph_testing" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/used-cars-database" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CZ4032" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/used-cars-database/graph_testing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="data_cleaning" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="data_preprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -277,24 +305,58 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="CZ4032" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_cleaning.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_preprocessing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="multilayer_perceptron_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="multi-layer-perceptron (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/used-cars-database" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="CZ4032" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/multi-layer-perceptron.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="result_analyis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CZ4032" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ResultAnalyser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph_testing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CZ4032" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -422,19 +484,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.logistic_regression" />
-      <item index="1" class="java.lang.String" itemvalue="Python.multi-layer-perceptron" />
-      <item index="2" class="java.lang.String" itemvalue="Python.graph_testing" />
-      <item index="3" class="java.lang.String" itemvalue="Python.data_cleaning" />
-      <item index="4" class="java.lang.String" itemvalue="Python.multilayer_perceptron_4" />
+      <item index="0" class="java.lang.String" itemvalue="Python.multi-layer-perceptron" />
+      <item index="1" class="java.lang.String" itemvalue="Python.data_preprocessing" />
+      <item index="2" class="java.lang.String" itemvalue="Python.multi-layer-perceptron (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.result_analyis" />
+      <item index="4" class="java.lang.String" itemvalue="Python.graph_testing" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.data_cleaning" />
-        <item index="1" class="java.lang.String" itemvalue="Python.multi-layer-perceptron" />
-        <item index="2" class="java.lang.String" itemvalue="Python.multilayer_perceptron_4" />
-        <item index="3" class="java.lang.String" itemvalue="Python.graph_testing" />
-        <item index="4" class="java.lang.String" itemvalue="Python.logistic_regression" />
+        <item index="0" class="java.lang.String" itemvalue="Python.graph_testing" />
+        <item index="1" class="java.lang.String" itemvalue="Python.multi-layer-perceptron (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.result_analyis" />
+        <item index="3" class="java.lang.String" itemvalue="Python.multi-layer-perceptron" />
+        <item index="4" class="java.lang.String" itemvalue="Python.data_preprocessing" />
       </list>
     </recent_temporary>
   </component>
@@ -452,18 +514,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1300" y="-406" width="1280" height="774" extended-state="0" />
-    <editor active="true" />
+    <frame x="1280" y="-443" width="1600" height="873" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494043" sideWeight="0.49415204" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19886003" sideWeight="0.49415204" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.50277996" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49722" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32991204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="21" y="71" width="1259" height="390" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49722" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32991204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1450" y="-368" width="1259" height="723" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.50584793" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -501,16 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/used-cars-database/4Layer-MSE.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -531,24 +583,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/graph_testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/used-cars-database/test_accuracy.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -565,23 +599,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logistic_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="126" selection-start-line="104" selection-start-column="126" selection-end-line="104" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -609,14 +626,6 @@
     <entry file="file://$PROJECT_DIR$/used-cars-database/training_error_validation_error.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/graph_testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../Neural Networks/Assignment/NN - Project 1B/B2.py">
@@ -667,11 +676,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dsFinal.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/used-cars-database/P1_B-(2)Learning Rate Validation Error.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -681,13 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="145" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logistic_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="126" selection-start-line="104" selection-start-column="126" selection-end-line="104" selection-end-column="126" />
         </state>
       </provider>
     </entry>
@@ -714,19 +711,17 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/training_error_validation_error.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/test_accuracy.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/used-cars-database/Price_prediction.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Python/3.6/lib/python/site-packages/pandas/core/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/used-cars-database/4Layer-MSE.png">
@@ -739,36 +734,58 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/graph_testing.py">
+    <entry file="file://$PROJECT_DIR$/used-cars-database/training_error_validation_error.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/used-cars-database/test_accuracy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/multilayer_perceptron_4.py">
+    <entry file="file://$PROJECT_DIR$/Images/Price_prediction.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Python/3.6/lib/python/site-packages/pandas/core/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/Images/actual_vs_predict.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/used-cars-database/multi-layer-perceptron.py">
+    <entry file="file://$PROJECT_DIR$/Images/test_accuracy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Images/test_cost.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-layer-perceptron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <caret line="99" column="2" selection-start-line="99" selection-start-column="2" selection-end-line="99" selection-end-column="2" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -777,10 +794,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_cleaning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.022865854">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        <state vertical-scroll-proportion="-61.666668">
+          <caret line="118" column="41" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResultAnalyser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13907285">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
