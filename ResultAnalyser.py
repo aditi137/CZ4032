@@ -54,3 +54,6 @@ class ResultAnalyser:
 
 
 
+resultView = ResultAnalyser('Results/pred_testY.csv', 1500)
+resultView.analyse()
+

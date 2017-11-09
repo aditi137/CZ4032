@@ -3,10 +3,10 @@ import numpy as np
 import theano
 import theano.tensor as T
 import ResultAnalyser
-from six.moves import cPickle
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from six.moves import cPickle
 
 floatX = theano.config.floatX
 
@@ -79,9 +79,9 @@ print("testX:", testX)
 #print("testX_Scale:", testX)
 
 epochs = 1000
-batch_size = 32
+batch_size_list = [16,32,64,128]
 no_hidden1 = 20 #num of neurons in hidden layer 1
-learning_rate = 0.00001
+learning_rate = 0.000001
 no_features = trainX.shape[1]
 n = trainX.shape[0]
 x = T.matrix('x') # data sample
@@ -134,29 +134,28 @@ validate = theano.function(
 
 lr = [0.00001]
 #lr = [0.00001]
-noFolds = 3
-train_cost = np.zeros([len(lr),epochs])
-validate_cost = np.zeros([len(lr),epochs])
+noFolds = 5
+train_cost = np.zeros([len(batch_size_list),epochs])
+validate_cost = np.zeros([len(batch_size_list),epochs])
 
-best_learning_rate = 0
+best_batch_size = 0
 min_error = 1e+15
 test_accuracy = np.zeros(epochs)
 test_cost = np.zeros(epochs)
 pred_matrix = np.zeros([epochs, testX.shape[0]])
 
-'''
+
 t = time.time()
-for j in range (len(lr)):
-    alpha.set_value(lr[j])
+for j in range (len(batch_size_list)):
+    #alpha.set_value(lr[j])
     print (alpha.get_value())
 
     for i in range (noFolds):#divide into folds
         start, end = (i*n//noFolds), ((i+1)*n//noFolds)
-        validateX, validateY = trainX[start:end], trainY[start:end]
-        tX, tY = (np.append(trainX[:start], trainX[end:], axis = 0)), (np.append(trainY[:start], trainY[end:], axis = 0))
-
-        print ("learning rate", alpha.get_value(), "Fold no.", i+1)
-        print("Reseting weights and biases")
+        #rows used to validate, still within training set
+        validateX, validateY = trainX[start:end], trainY[start:end] 
+        #rows used for training
+        tX, tY = (np.append(trainX[:start], trainX[end:], axis = 0)), (np.append(trainY[:start], trainY[end:], axis = 0)) 
         k = tX.shape[0]
         set_weights(w_o,no_hidden1)
         set_bias(b_o)
@@ -168,17 +167,27 @@ for j in range (len(lr)):
                 print(iter)
 
             tX, tY = shuffle_data(tX, tY)
-            for start, end in zip(range(0, k, batch_size), range(batch_size, k, batch_size)):#divide to mini batches
-                train_cost[j][iter] += train(tX[start:end], tY[start:end])/(k//batch_size)/noFolds
+            for start, end in zip(range(0, k, batch_size_list[j]), range(batch_size_list[j], k, batch_size_list[j])):#divide to mini batches
+                train_cost[j][iter] += train(tX[start:end], tY[start:end])/(k//batch_size_list[j])/noFolds
             validate_cost[j][iter] += validate(validateX, validateY)/noFolds
             if (i == (noFolds-1)):
                 if (validate_cost[j][iter] < min_error):
                     min_error = validate_cost[j][iter]
-                    best_learning_rate = lr[j]
+                    best_batch_size = batch_size_list[j]
         print("complete fold", i+1)
-    print ("Complete validation on learning rate", alpha.get_value())
+    print ("Complete validation on batch size", batch_size_list[j])
 
-#print("Optimal Learning rate =", best_learning_rate)'''
+filename = 'result_components/validate_cost.save'
+f = open(filename, 'wb')
+cPickle.dump(validate_cost, f, protocol=cPickle.HIGHEST_PROTOCOL)
+f.close()
+
+filename = 'result_components/train_cost.save'
+f = open(filename, 'wb')
+cPickle.duml(train_cost,f,protocol=cPickle.HIGHEST_PROTOCOL)
+f.close()
+
+print("Optimal batch size =", best_batch_size)
 
 set_weights(w_o,no_hidden1)
 set_bias(b_o)
@@ -186,13 +195,13 @@ set_weights(w_h1,no_features,no_hidden1)
 set_bias(b_h1,no_hidden1)
 #alpha.set_value(best_learning_rate)
 
-print("training on optimal learning rate")
+print("training on optimal batch size")
 for iter in range(epochs):
     if iter % 100 == 0:
         print(iter)
 
     trainX, trainY = shuffle_data(trainX, trainY)
-    for start, end in zip(range(0, n, batch_size), range(batch_size, n, batch_size)):#divide to mini batches
+    for start, end in zip(range(0, n, best_batch_size), range(best_batch_size, n, best_batch_size)):#divide to mini batches
         train(trainX[start:end], trainY[start:end])
     pred, test_cost[iter], test_accuracy[iter] = test(testX, testY)
     #pred_trans = np.transpose(pred)
@@ -203,15 +212,6 @@ for iter in range(epochs):
 #print("test_accuracy:", test_accuracy[min_index])
 #pred = (pred_matrix[min_index])
 #pred = np.reshape(pred, (pred.size,1))
-f_list = [w_h1,b_h1,w_o,b_o]
-
-for i in range(len(f_list)):
-    filename = 'result_components/weight'+str(i)+'.save'
-    f = open(filename, 'wb')
-    cPickle.dump(f_list[i], f, protocol=cPickle.HIGHEST_PROTOCOL)
-    f.close()
-
-
 
 
 print("pred:" , pred)
@@ -225,12 +225,12 @@ np.savetxt('Results/pred_testY.csv', combined, delimiter=',')
 plt.figure()
 i=0
 for x,y in zip(train_cost, validate_cost):
-    plt.plot(np.arange(epochs), x, label=("train_cost",lr[i]))
-    plt.plot(np.arange(epochs), y, label=("validate_cost",lr[i]))
+    plt.plot(np.arange(epochs), x, label=("train_cost",batch_size_list[i]))
+    plt.plot(np.arange(epochs), y, label=("validate_cost",batch_size_list[i]))
     plt.xlabel("epochs")
     plt.ylabel("train_cost")
     plt.legend()
-    plt.savefig("train_cost_validate_cost.png")
+    plt.savefig("result_components/train_cost_validate_cost.png")
     i+=1
 
 '''
