@@ -71,7 +71,7 @@ dsWD = dsWD[
 
 print("-----------------\nData kept for analisys: %d percent of the entire set\n-----------------" % (100 * dsWD['name'].count() / df['name'].count()))
 
-#dsWD.to_csv('data_without_duplicates.csv',sep=',')
+
 
 #print(dsWD.isnull().sum())
 #get count of columns that have null values. 5 columns containing values = nan
@@ -102,9 +102,6 @@ dsWD['model'].fillna(value='not-declared_mo', inplace=True)
 
 
 categories = ['gearbox', 'model', 'brand', 'vehicleType', 'fuelType', 'notRepairedDamage']
-
-
-
 
 gearBoxVal = df['gearbox'].unique()
 gearBoxRep = ['automatic','manual','not-declared_gb']

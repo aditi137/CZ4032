@@ -2,7 +2,6 @@ import time
 import numpy as np
 import theano
 import theano.tensor as T
-import ResultAnalyser
 from six.moves import cPickle
 
 import matplotlib.pyplot as plt
@@ -79,7 +78,7 @@ print("testX:", testX)
 #print("testX_Scale:", testX)
 
 epochs = 1000
-batch_size = 16
+batch_size = 32
 no_hidden1 = 20 #num of neurons in hidden layer 1
 learning_rate = 0.00001
 no_features = trainX.shape[1]
@@ -132,7 +131,7 @@ validate = theano.function(
     allow_input_downcast=True
     )
 
-lr = [0.1,0.01,0.0001,0.00001,0.00001]
+lr = [0.001,0.0005,0.0001, 0.00005,0.00001] 
 #lr = [0.00001]
 noFolds = 5
 train_cost = np.zeros([len(lr),epochs])
@@ -178,14 +177,19 @@ for j in range (len(lr)):
         print("complete fold", i+1)
     print ("Complete validation on learning rate", alpha.get_value())
 
-filename = 'result_components/validate_cost.save'
+filename = 'result_components/find_optimal_learning_rate/validate_cost.save'
 f = open(filename, 'wb')
 cPickle.dump(validate_cost, f, protocol=cPickle.HIGHEST_PROTOCOL)
 f.close()
 
-filename = 'result_components/train_cost.save'
+filename = 'result_components/find_optimal_learning_rate/train_cost.save'
 f = open(filename, 'wb')
 cPickle.dump(train_cost,f,protocol=cPickle.HIGHEST_PROTOCOL)
+f.close()
+
+filename = 'result_components/find_optimal_learning_rate/best_learning_rate.save'
+f = open(filename, 'wb')
+cPickle.dump(best_learning_rate, f, protocol=cPickle.HIGHEST_PROTOCOL)
 f.close()
 
 print("Optimal Learning rate =", best_learning_rate)
@@ -232,7 +236,7 @@ for x,y in zip(train_cost, validate_cost):
     plt.xlabel("epochs")
     plt.ylabel("train_cost")
     plt.legend()
-    plt.savefig("train_cost_validate_cost.png")
+    plt.savefig("result_components/find_optimal_learning_rate/train_cost_validate_cost.png")
     i+=1
 
 
@@ -243,7 +247,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.title('Test Accuracy')
 plt.legend()
-plt.savefig('Images/test_accuracy.png')
+plt.savefig('result_components/find_optimal_learning_rate/test_accuracy.png')
 
 plt.figure()
 plt.plot(np.arange(epochs),test_cost,label=('test_cost'))
@@ -251,7 +255,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Cost')
 plt.title('Test Cost')
 plt.legend()
-plt.savefig('Images/test_cost.png')
+plt.savefig('result_components/find_optimal_learning_rate/test_cost.png')
 
 plt.figure()
 plt.plot(np.arange(testX.shape[0]),testY, label=('price in dataset'))
@@ -259,7 +263,7 @@ plt.plot(np.arange(testX.shape[0]),pred, label=('predicted price'))
 plt.legend()
 plt.xlabel('Input row')
 plt.ylabel('Price')
-plt.savefig('Images/Price_prediction.png')
+plt.savefig('result_components/find_optimal_learning_rate/Price_prediction.png')
 
 '''
 plt.figure()
@@ -273,8 +277,6 @@ plt.plot(np.arange(testX.shape[0]), price_diff, label=("diff between actual pric
 plt.legend()
 plt.xlabel('Input row')
 plt.ylabel('Price')
-plt.savefig('Images/actual_vs_predict.png')
+plt.savefig('result_components/find_optimal_learning_rate/actual_vs_predict.png')
 plt.show()
 
-resultView = ResultAnalyser('Results/pred_testY.csv', 1500)
-resultView.analyse()

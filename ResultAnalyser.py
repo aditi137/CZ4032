@@ -1,33 +1,13 @@
 import pandas as pd
 import numpy as np
-'''results = np.loadtxt('Results/pred_testY.csv', delimiter=',')
-print(results)
-list_diff = results[:,2]
-
-print("number of rows: " , results.shape[0])
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
 
-acceptable_price_range = 1500
-
-list_index = [index if abs(list_diff[index])<acceptable_price_range else -1 for index in np.arange(list_diff.shape[0])]
-#remove all the -1 from the list
-list_index = list(filter(lambda a: a != -1, list_index))
-
-accepted_results = results[list_index]
-print("number of rows accepted: " , accepted_results.shape[0])
-portion_accepted = accepted_results.shape[0]/results.shape[0] * 100
-print("percentage of price within", acceptable_price_range ,"range: ", portion_accepted)
-mean_absolute_error = np.mean(results[:,2]/results[:,1])
-print("mean_absolute_error: " , mean_absolute_error)'''
-
-
-##rewrite as class
 
 class ResultAnalyser:
     _results = ""
     _acceptable_price_range = 0
-    _mean_relative_absolute_error =0
-    _mean_absolute_error=0
 
     def __init__(self, file, range):
         self._results = np.loadtxt(file, delimiter=',')
@@ -43,17 +23,41 @@ class ResultAnalyser:
         #remove all the -1 from the list
         list_index = list(filter(lambda a: a != -1, list_index))
 
+        '''
+                          
+        Mean absolute error   - okay                
+        Root mean squared error - okay              
+                 
+        Total Number of Instances             
+        '''
+
+        pred = self._results[:,0]
+        actual = self._results[:,1]
+        diff = self._results[:,2]
+
         accepted_results = self._results[list_index]
-        print("number of rows accepted: " , accepted_results.shape[0])
+        
         portion_accepted = accepted_results.shape[0]/self._results.shape[0] * 100
+
+        mean_abs_error = np.mean(abs(diff))
+
+        #root mean squared error
+        rmse = sqrt(mean_squared_error(actual,pred))
+
+        #mean absolute percentage error
+        mape = np.mean(abs(diff)/actual) *100
+        
+
+
+        print("number of rows accepted: " , accepted_results.shape[0])
         print("percentage of price within", self._acceptable_price_range ,"range: ", portion_accepted)
-        self._mean_relative_absolute_error = np.mean(abs(self._results[:,2])/self._results[:,1])
-        print("mean_relative_absolute_error: " , self._mean_relative_absolute_error)
-        self._mean_absolute_error = np.mean(abs(self._results[:,2]))
-        print("mean_absolute_error: " , self._mean_absolute_error)
+        print("mean absolute error: ", mean_abs_error)
+        print("rmse: " , rmse)
+        print("mape: ", mape)
 
 
 
-resultView = ResultAnalyser('Results/pred_testY.csv', 1500)
+filename = input('Enter filepath')
+resultView = ResultAnalyser(filename, 1500)
 resultView.analyse()
 

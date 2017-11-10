@@ -2,7 +2,6 @@ import time
 import numpy as np
 import theano
 import theano.tensor as T
-import ResultAnalyser
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D

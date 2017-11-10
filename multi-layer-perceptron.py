@@ -2,7 +2,6 @@ import time
 import numpy as np
 import theano
 import theano.tensor as T
-import ResultAnalyser
 from six.moves import cPickle
 
 import matplotlib.pyplot as plt
@@ -81,7 +80,7 @@ print("testX:", testX)
 epochs = 1000
 batch_size = 32
 no_hidden1 = 20 #num of neurons in hidden layer 1
-learning_rate = 0.00001
+learning_rate = 0.001
 no_features = trainX.shape[1]
 n = trainX.shape[0]
 x = T.matrix('x') # data sample
@@ -135,50 +134,14 @@ validate = theano.function(
 lr = [0.00001]
 #lr = [0.00001]
 noFolds = 3
-train_cost = np.zeros([len(lr),epochs])
-validate_cost = np.zeros([len(lr),epochs])
+train_cost = np.zeros([epochs])
+validate_cost = np.zeros([epochs])
 
 best_learning_rate = 0
 min_error = 1e+15
 test_accuracy = np.zeros(epochs)
 test_cost = np.zeros(epochs)
 pred_matrix = np.zeros([epochs, testX.shape[0]])
-
-'''
-t = time.time()
-for j in range (len(lr)):
-    alpha.set_value(lr[j])
-    print (alpha.get_value())
-
-    for i in range (noFolds):#divide into folds
-        start, end = (i*n//noFolds), ((i+1)*n//noFolds)
-        validateX, validateY = trainX[start:end], trainY[start:end]
-        tX, tY = (np.append(trainX[:start], trainX[end:], axis = 0)), (np.append(trainY[:start], trainY[end:], axis = 0))
-
-        print ("learning rate", alpha.get_value(), "Fold no.", i+1)
-        print("Reseting weights and biases")
-        k = tX.shape[0]
-        set_weights(w_o,no_hidden1)
-        set_bias(b_o)
-        set_weights(w_h1,no_features,no_hidden1)
-        set_bias(b_h1,no_hidden1)
-
-        for iter in range(epochs):
-            if iter % 100 == 0:
-                print(iter)
-
-            tX, tY = shuffle_data(tX, tY)
-            for start, end in zip(range(0, k, batch_size), range(batch_size, k, batch_size)):#divide to mini batches
-                train_cost[j][iter] += train(tX[start:end], tY[start:end])/(k//batch_size)/noFolds
-            validate_cost[j][iter] += validate(validateX, validateY)/noFolds
-            if (i == (noFolds-1)):
-                if (validate_cost[j][iter] < min_error):
-                    min_error = validate_cost[j][iter]
-                    best_learning_rate = lr[j]
-        print("complete fold", i+1)
-    print ("Complete validation on learning rate", alpha.get_value())
-
-#print("Optimal Learning rate =", best_learning_rate)'''
 
 set_weights(w_o,no_hidden1)
 set_bias(b_o)
@@ -193,7 +156,7 @@ for iter in range(epochs):
 
     trainX, trainY = shuffle_data(trainX, trainY)
     for start, end in zip(range(0, n, batch_size), range(batch_size, n, batch_size)):#divide to mini batches
-        train(trainX[start:end], trainY[start:end])
+        train_cost[iter] += train(trainX[start:end], trainY[start:end]) / (n//batch_size)
     pred, test_cost[iter], test_accuracy[iter] = test(testX, testY)
     #pred_trans = np.transpose(pred)
     #pred_matrix[iter] = pred_trans
@@ -206,7 +169,7 @@ for iter in range(epochs):
 f_list = [w_h1,b_h1,w_o,b_o]
 
 for i in range(len(f_list)):
-    filename = 'result_components/weight'+str(i)+'.save'
+    filename = 'result_components/first_run/weight'+str(i)+'.save'
     f = open(filename, 'wb')
     cPickle.dump(f_list[i], f, protocol=cPickle.HIGHEST_PROTOCOL)
     f.close()
@@ -220,39 +183,19 @@ print("testY:", testY)
 price_diff = pred-testY
 
 combined = np.concatenate((pred,testY, price_diff),axis=1)
-np.savetxt('Results/pred_testY.csv', combined, delimiter=',')
+np.savetxt('result_components/first_run/pred_testY.csv', combined, delimiter=',')
 #Plots
 plt.figure()
 i=0
-for x,y in zip(train_cost, validate_cost):
-    plt.plot(np.arange(epochs), x, label=("train_cost",lr[i]))
-    plt.plot(np.arange(epochs), y, label=("validate_cost",lr[i]))
-    plt.xlabel("epochs")
-    plt.ylabel("train_cost")
-    plt.legend()
-    plt.savefig("train_cost_validate_cost.png")
-    i+=1
 
-'''
 plt.figure()
-plt.plot(np.arange(epochs),validate_cost[0],label='Validation alpha = 0.001')
-plt.plot(np.arange(epochs),validate_cost[1],label='Validation alpha=0.005')
-plt.plot(np.arange(epochs),validate_cost[2],label='Validation alpha=0.0001')
-plt.plot(np.arange(epochs),validate_cost[3],label='Validation alpha=0.0005')
-plt.plot(np.arange(epochs),validate_cost[4],label='Validation alpha=0.00001')
-
-#plt.plot(np.arange(epochs),train_cost[0],'--',label='Training alpha=0.001')
-
-plt.plot(np.arange(epochs),train_cost[1],'--',label='Training alpha=0.005')
-plt.plot(np.arange(epochs),train_cost[2],'--',label='Training alpha=0.0001')
-plt.plot(np.arange(epochs),train_cost[3],'--',label='Training alpha=0.0005')
-plt.plot(np.arange(epochs),train_cost[4],'--',label='Training alpha=0.00001')
-plt.xlabel('Time (s)')
-plt.ylabel('Mean Square Error')
-plt.title('Training and validating for different learning rates')
+plt.plot(np.arange(epochs), train_cost, label=("training cost"))
+plt.xlabel('Epochs')
+plt.ylabel('Cost')
+plt.title('Training Cost')
 plt.legend()
-plt.savefig('training_error_validation_error.png')
-'''
+plt.savefig('result_components/first_run/training_cost.png')
+
 
 plt.figure()
 plt.plot(np.arange(epochs),test_accuracy,label=('test accuracy'))
@@ -260,7 +203,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.title('Test Accuracy')
 plt.legend()
-plt.savefig('result_components/test_accuracy.png')
+plt.savefig('result_components/first_run/test_accuracy.png')
 
 plt.figure()
 plt.plot(np.arange(epochs),test_cost,label=('test_cost'))
@@ -268,7 +211,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Cost')
 plt.title('Test Cost')
 plt.legend()
-plt.savefig('result_components/test_cost.png')
+plt.savefig('result_components/first_run/test_cost.png')
 
 plt.figure()
 plt.plot(np.arange(testX.shape[0]),testY, label=('price in dataset'))
@@ -276,7 +219,7 @@ plt.plot(np.arange(testX.shape[0]),pred, label=('predicted price'))
 plt.legend()
 plt.xlabel('Input row')
 plt.ylabel('Price')
-plt.savefig('result_components/Price_prediction.png')
+plt.savefig('result_components/first_run/Price_prediction.png')
 
 '''
 plt.figure()
@@ -290,8 +233,5 @@ plt.plot(np.arange(testX.shape[0]), price_diff, label=("diff between actual pric
 plt.legend()
 plt.xlabel('Input row')
 plt.ylabel('Price')
-plt.savefig('result_components/actual_vs_predict.png')
+plt.savefig('result_components/first_run/actual_vs_predict.png')
 plt.show()
-
-resultView = ResultAnalyser('Results/pred_testY.csv', 1500)
-resultView.analyse()
