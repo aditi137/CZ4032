@@ -19,3 +19,6 @@ f.close()
 print(train_cost)
 print(validate_cost)
 print(best_learning_rate)
+
+print(train_cost[:,-1])
+print(validate_cost[:,-1])

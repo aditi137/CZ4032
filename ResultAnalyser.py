@@ -36,6 +36,7 @@ class ResultAnalyser:
         diff = self._results[:,2]
 
         accepted_results = self._results[list_index]
+        #print(accepted_results)
         
         portion_accepted = accepted_results.shape[0]/self._results.shape[0] * 100
 

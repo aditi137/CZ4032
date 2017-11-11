@@ -38,7 +38,7 @@ Steps:
 '''
 
 # 1st stage of data-cleaning procedure =======================================================================================================================
-df = pd.read_csv('used-cars-database//autos.csv', sep =',', header = 0, encoding='cp1252')
+df = pd.read_csv('datasets/autos.csv', sep =',', header = 0, encoding='cp1252')
 
 sample_A = df.sample(100) #test code to get first 100 samples
 sample_A_description = df.describe() #.describe() gets count mean std min max + other properties of each column
@@ -61,7 +61,7 @@ dsWD = dsWD[
         (dsWD.yearOfRegistration <= 2016)
       & (dsWD.yearOfRegistration >= 1950)
       & (dsWD.price >= 100)
-      & (dsWD.price <= 150000)
+      & (dsWD.price <= 100000)
       & (dsWD.powerPS >= 10)
       & (dsWD.powerPS <= 500)]
 

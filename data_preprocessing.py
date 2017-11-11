@@ -3,7 +3,7 @@ from sklearn import preprocessing as prep
 
 #get a dataset containing attributes: km, powerPS, yearRegistered, vehicleType, brand='volkswagen'
 
-df = pd.read_csv('datasets/cleaned_dataset.csv', sep=',', header=0, encoding='cp1252')
+df = pd.read_csv('datasets/cleaned_dataset.csv', sep=',', header=0, encoding='utf8')
 #
 df_vw = pd.DataFrame(df.loc[df['brand']=='volkswagen'])
 #print(df_vw.head())

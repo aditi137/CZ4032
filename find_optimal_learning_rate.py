@@ -131,7 +131,7 @@ validate = theano.function(
     allow_input_downcast=True
     )
 
-lr = [0.001,0.0005,0.0001, 0.00005,0.00001] 
+lr = [0.001,0.0005,0.0001, 0.00005,0.00001, 0.000005] 
 #lr = [0.00001]
 noFolds = 5
 train_cost = np.zeros([len(lr),epochs])
